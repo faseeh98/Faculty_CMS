@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Page</title>
+	<link rel="stylesheet" type="text/css" href="assets/admin.css">
+</head>
+<body>
+<header><h1>Admin Page</h1></header>
+<form name=adminForm onsubmit="return Validate()" action="http://localhost:8080/update/" method="POST" enctype="multipart/form-data">
+	<h5>Name</h5>
+	<input type="text" name="name" placeholder="Enter your first and last name" id="input_box" size="35">
+	<h5>Phone Number</h5>
+	<input type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone" placeholder="Enter your phone number" id="input_box" size="35" onsubmit="return phonenumber()">
+	<h5>Email Address</h5>
+	<input type="email" name="email" placeholder="Enter your email address" id="input_box" size="35">
+	<h5>About Me</h5>
+	<input type="text" name="about" placeholder="Write your bio here" id="aboutme_box" size="100">
+	<h5>Image File</h5>
+	<input type="file" name="file">
+	<br><br>
+	<input type="submit" name="update" value="Update" id="update_button">
+	<br><br>
+</form>
+
+
+<script type="text/javascript">
+	function Validate() {
+		var name = document.forms["adminForm"]["name"].value;
+		var phone = document.forms["adminForm"]["phone"].value;
+		var email = document.forms["adminForm"]["email"].value;
+		var about = document.forms["adminForm"]["about"].value;
+			if(name == "") {
+				alert("Please enter your first and last name");
+				return false;
+			}
+			if(name.length < 5) {
+				alert("name must be at least 5 characters");
+				return false;
+			}
+			if(phone == "") {
+				alert("Please enter your phone number");
+				return false;
+			}
+			if(email == "") {
+				alert("Please enter your email address");
+				return false;
+			}
+			if (about !== "") {
+				if(about.length < 20) {
+				alert("Please enter at least 20 characters");
+				return false;
+			}
+			}
+	}
+</script>
+
+
+</body>
+</html>

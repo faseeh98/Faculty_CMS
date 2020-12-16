@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Lab 4</title>
+	<link rel="stylesheet" type="text/css" href="assets/login.css">
+</head>
+
+<body>
+
+<header><h1>Login Form</h1></header>
+
+<form name=loginForm onsubmit="return Validate()">
+	<h5>Username</h5>
+	<input type="text" name="username" placeholder="Enter your username" id="input_box" size="35">
+	<h5>Password</h5>
+	<input type="password" name="pass" placeholder="Enter your password" id="input_box" size="35">
+	<br><br>
+	<input type="submit" name="Login" value="Login" id="login_button" >
+	<br><br>
+	<input type="checkbox" name="remember_me" value="Remember" checked> Remember Me
+</form>
+
+<script type="text/javascript">
+	function Validate() {
+		var usernameID = document.forms["loginForm"]["username"].value;
+		var password = document.forms["loginForm"]["pass"].value;
+			if(usernameID == "") {
+				alert("Please enter a username");
+				return false;
+			}
+			if(usernameID.length < 5) {
+				alert("username must be at least 5 characters");
+				return false;
+			}
+			if(password == "") {
+				alert("Please enter a password");
+				return false;
+			}
+	}
+</script>
+
+</body>
+</html>

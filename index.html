@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="myApp">
+
+<head>
+	<title>Index</title>
+	<meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/index.css">
+	<script src="app/lib/angular.min.js"></script>
+	<script src="app/app.js"></script>
+</head>
+
+<body ng-controller="myCtrl">
+	<header>
+		<div id="headline">
+			<h1>Faseeh's Webpage</h1>
+		</div>
+	</header>
+
+	<nav>
+		<a href="#contacts">Contacts</a>
+		<a href="#aboutme">About Me</a>
+		<a href="#programming">Programming</a>
+		<a href="#professional">Professional</a>
+		<a href="#schedules">Schedules</a>
+	</nav>
+
+<div class="row">
+	<div id="picture" class="column side">
+		<img src=uoitlogo.png>
+	</div>
+<div id="contacts" class="column middle">
+	<p>{{name}}</p>
+	<p>{{faculty}}</p>
+	<a href="{{university.url}}">{{university.name}}</a>
+	<p>IT Management</p>
+	<p>{{contacts.email}}</p>
+	<p>{{contacts.phone}}</p>
+	<a href="https://www.linkedin.com/in/faseeh98/">LinkedIn Profile</a>
+</div>
+</div>
+
+<div class="row">
+	<div id="aboutme" class="column side">
+	<h4>About Me</h4>
+	<p>  I am a third year IT Management student with a passion for all topics related to the advancements in technology, its effects on our lives and its applications in the business world. I enjoy finding innovative avenues for businesses to efficiently improve their processes and have a passion for data science and its vast applications.
+	</p>
+	</div>
+
+<div id="professional" class="column middle">
+	<h4>Techinical and Professional Skills</h4>
+<ol>
+	<li ng-repeat="x in skills"><strong>{{x.name}}</strong>: {{x.text}}</li>
+</ol>
+</div>
+
+<div id="programming" class="column side">
+	<h4>Programming Skills</h4>
+<ul>
+	<li ng-repeat="prog_skills in programmingSkills">{{prog_skills}}</li>
+</ul>
+</div>
+</div>
+
+<div id="schedules">
+	<h4>Course Schedule</h4>
+<table>
+	<thead>
+		<tr>
+			<th><button ng-click="sortBy('name')" id="TableBorder" align="center">Course Name</button></th>
+			<th><button ng-click="sortBy('number')" id="TableBorder" align="center">Course Number</button></th>
+			<th><button ng-click="sortBy('time[0]')" id="TableBorder" align="center">Days and Time</button></th>
+			<th><button ng-click="sortBy('instructor')" id="TableBorder" align="center">Instructor</button></th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="x in courses | orderBy:propertyName:reverse">
+		<tr>
+			<td id="TableBorder" align="center" rowspan="2">{{x.name}}</td>
+			<td id="TableBorder" align="center" rowspan="2">{{x.number}}</td>
+			<td id="TableBorder" align="center">{{x.time[0]}}</td>
+			<td id="TableBorder" align="center" rowspan="2">{{x.instructor}}</td>
+		</tr>
+		<tr><td id="TableBorder" align="center">{{x.time[1]}}</td></tr>
+	</tbody>
+</table>
+</div>
+
+<footer>Designed by {{name}} @ 2019 &copy;</footer>
+
+</body>
+</html>
